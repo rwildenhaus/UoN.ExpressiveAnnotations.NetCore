@@ -128,3 +128,5 @@ node_modules/
 /src/UoN.ExpressiveAnnotations.NetCoreSample/wwwroot/fonts/
 /src/UoN.ExpressiveAnnotations.NetCoreSample/wwwroot/js/
 
+/src/UoN.ExpressiveAnnotations.NetCoreSample/wwwroot/js/jquery.js
+/src/UoN.ExpressiveAnnotations.NetCoreSample/wwwroot/js/site.min.js

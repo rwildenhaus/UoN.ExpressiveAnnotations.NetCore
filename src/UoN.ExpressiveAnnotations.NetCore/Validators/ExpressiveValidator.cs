@@ -26,6 +26,7 @@ namespace UoN.ExpressiveAnnotations.NetCore.Validators
     {
         private readonly IMemoryCache _requestCache;
 
+        private static string _suffixChars = " abcdefghijklmnopqrstuvwxyz";
 
         /// <summary>
         ///     Constructor for expressive model validator.
@@ -264,7 +265,17 @@ namespace UoN.ExpressiveAnnotations.NetCore.Validators
             count++;
             AssertAttribsQuantityAllowed(count);
             _requestCache.Set(AttributeWeakId, count);
-            return count == 1 ? string.Empty : char.ConvertFromUtf32(95 + count); // single lowercase letter from latin alphabet or an empty string
+
+            if (count == 1)
+                return string.Empty;
+
+            // Normalize count to be zero-indexed
+            count -= 2;
+            var suffixCharA = _suffixChars[count / _suffixChars.Length];
+            var suffixCharB = _suffixChars[count % _suffixChars.Length];
+
+            var suffix = new string(new[] { suffixCharA, suffixCharB });
+            return suffix;
         }
 
         private void AssertClientSideCompatibility() // verify client-side compatibility of current expression
@@ -319,7 +330,7 @@ namespace UoN.ExpressiveAnnotations.NetCore.Validators
 
         private void AssertAttribsQuantityAllowed(int count)
         {
-            const int max = 27;
+            const int max = 100;
             if (count > max)
             {
                 throw new InvalidOperationException(

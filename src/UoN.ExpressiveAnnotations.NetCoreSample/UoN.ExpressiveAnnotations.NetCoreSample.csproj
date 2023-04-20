@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,10 +37,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
 </Project>

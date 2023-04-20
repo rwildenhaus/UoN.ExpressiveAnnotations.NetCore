@@ -1,37 +1,47 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageVersion>1.0.0</PackageVersion>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<PackageVersion>1.0.0</PackageVersion>
 
-    <Authors>UoN Application Development</Authors>
+		<Authors>UoN Application Development</Authors>
 
-    <Description>
-Fork of Jarosław Waliszko's Expressive Annotations .NET library, adding support for client-side validation in .NET Core. Expressive Annotations provides new flexible and powerful model validation attributes, to add to the attributes built in to .NET.
-    </Description>
+		<Description>
+			Fork of Jarosław Waliszko's Expressive Annotations .NET library, adding support for client-side validation in .NET Core. Expressive Annotations provides new flexible and powerful model validation attributes, to add to the attributes built in to .NET.
+		</Description>
 
-    <PackageReleaseNotes>
-This release simplifies the way that the package is configured in Startup.cs. If you were using a previous version of this package, you will need to change the code in your startup class. See the readme on github under 'Add code to Startup'.
-    </PackageReleaseNotes>
+		<PackageReleaseNotes>
+			This release simplifies the way that the package is configured in Startup.cs. If you were using a previous version of this package, you will need to change the code in your startup class. See the readme on github under 'Add code to Startup'.
+		</PackageReleaseNotes>
 
-    <Copyright>Copyright 2018 (c) University of Nottingham.</Copyright>
+		<Copyright>Copyright 2018 (c) University of Nottingham.</Copyright>
 
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageIconUrl>https://raw.githubusercontent.com/uon-nuget/assets/master/nuget-package-icon.png</PackageIconUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/uon-nuget/UoN.ExpressiveAnnotations.NetCore/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/uon-nuget/UoN.ExpressiveAnnotations.NetCore</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/uon-nuget/UoN.ExpressiveAnnotations.NetCore</RepositoryUrl>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageIconUrl>https://raw.githubusercontent.com/uon-nuget/assets/master/nuget-package-icon.png</PackageIconUrl>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/uon-nuget/UoN.ExpressiveAnnotations.NetCore/master/LICENSE</PackageLicenseUrl>
+		<PackageProjectUrl>https://github.com/uon-nuget/UoN.ExpressiveAnnotations.NetCore</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/uon-nuget/UoN.ExpressiveAnnotations.NetCore</RepositoryUrl>
 
-    <PackageTags>UoN Validation Unobtrusive DataAnnotations Annotations</PackageTags>
+		<PackageTags>UoN Validation Unobtrusive DataAnnotations Annotations</PackageTags>
 
-  </PropertyGroup>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.1.3" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
-  </ItemGroup>
+	<PropertyGroup>
+		<GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);SetPackageVersion</GenerateNuspecDependsOn>
+	</PropertyGroup>
+
+	<Target Name="SetPackageVersion" DependsOnTargets="Build">
+		<PropertyGroup>
+			<PackageVersion>$([System.DateTime]::Now.ToString(&quot;yyyy.MM.dd.HHmmss&quot;))</PackageVersion>
+		</PropertyGroup>
+	</Target>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.1.3" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+		<PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+	</ItemGroup>
 
 </Project>

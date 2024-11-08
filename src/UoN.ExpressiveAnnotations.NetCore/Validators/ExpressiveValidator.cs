@@ -330,7 +330,7 @@ namespace UoN.ExpressiveAnnotations.NetCore.Validators
 
         private void AssertAttribsQuantityAllowed(int count)
         {
-            const int max = 100;
+            const int max = 500;
             if (count > max)
             {
                 throw new InvalidOperationException(
